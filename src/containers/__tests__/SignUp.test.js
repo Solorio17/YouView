@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import SignUp from '../SignUp';
 
 describe("Sign Up Form", () => {
@@ -7,19 +7,25 @@ describe("Sign Up Form", () => {
         shallow(<SignUp />);
     });
 
-    let mountedSignUp;
+    let shallowSignUp, mountedSignUp;
+
     beforeEach( () => {
-        mountedSignUp = shallow(<SignUp/>);
+        shallowSignUp = shallow(<SignUp/>);
+        mountedSignUp = mount(<SignUp/>);
     });
 
     it("includes a form", () => {
-        let form = mountedSignUp.find('form');
+        let form = shallowSignUp.find('form');
         expect(form.length).toBe(1);
     });
 
     it("includes a submit button", () => {
-        let button = mountedSignUp.find('button');
+        let button = shallowSignUp.find('button');
         expect(button.length).toBe(1);
     });
 
+    it('renders the EmailInput component', ()=>{
+        let EmailInput = shallowSignUp.find('EmailInput');
+        expect(EmailInput.length).toBe(1);
+    });
 });
