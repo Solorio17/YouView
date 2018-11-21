@@ -23,6 +23,13 @@ describe("Email Input", () => {
         expect(email_input.length).toBe(1);
     });
 
+    it('checks for empty input', ()=>{
+        let email_input = mounted_wrapper.find('input');
+        email_input.simulate('focus');
+        email_input.simulate('blur');
+        expect(email_input.instance().className).toEqual('form-control is-invalid');
+    });
+
     it("checks input value onChange", () => {
         let email_input = mounted_wrapper.find("input");
         email_input.simulate('change', {target: {value:"she knows"}});

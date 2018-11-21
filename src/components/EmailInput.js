@@ -37,7 +37,8 @@ class EmailInput extends Component{
                     id="Email" 
                     value={this.state.email}
                     placeholder="Email"
-                    onChange={(e) => this.changeInput(e)}
+                    onChange={this.changeInput}
+                    onBlur={this.validEmailHandler}
                     className={ "form-control " + ( this.state.validEmail != null ?
                                                   ( this.state.validEmail ? "is-valid" : "is-invalid") : "") }
                 />
