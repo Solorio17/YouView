@@ -63,4 +63,15 @@ describe("Email Input", () => {
         expect(email_input.instance().className).toEqual('form-control is-valid');
     });
 
+    it('simulates a user typo', ()=>{
+        let email_input = mounted_wrapper.find('input');
+        email_input.simulate('change', {target: {value: 'username@gmail,com'}});
+        email_input.simulate('blur');
+        expect(email_input.instance().className).toEqual('form-control is-invalid');
+
+        email_input.simulate('change', {target: {value: 'username@gmail.com'}});
+        email_input.simulate('blur');
+        expect(email_input.instance().className).toEqual('form-control is-valid');
+    });
+
 });
