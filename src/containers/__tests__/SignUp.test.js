@@ -7,25 +7,25 @@ describe("Sign Up Form", () => {
         shallow(<SignUp />);
     });
 
-    let shallowSignUp, mountedSignUp;
+    let shallow_wrapper, mounted_wrapper;
 
     beforeEach( () => {
-        shallowSignUp = shallow(<SignUp/>);
-        mountedSignUp = mount(<SignUp/>);
+        shallow_wrapper = shallow(<SignUp/>);
+        mounted_wrapper = mount(<SignUp/>);
     });
 
     it("includes a form", () => {
-        let form = shallowSignUp.find('form');
+        let form = shallow_wrapper.find('form');
         expect(form.length).toBe(1);
     });
 
     it("includes a submit button", () => {
-        let button = shallowSignUp.find('button');
+        let button = shallow_wrapper.find('button');
         expect(button.length).toBe(1);
     });
 
     it('renders the EmailInput component', ()=>{
-        let EmailInput = shallowSignUp.find('EmailInput');
+        let EmailInput = shallow_wrapper.find('EmailInput');
         expect(EmailInput.length).toBe(1);
     });
 });
