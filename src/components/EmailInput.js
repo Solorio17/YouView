@@ -9,23 +9,17 @@ class EmailInput extends Component{
             email: '',
             validEmail: null
         }
-    }
+    };
 
-    changeInput(e){
-        this.setState({email: e.target.value},
-            () => {
-                if(this.state.email.match(emailRegex) )
-                    this.setState(
-                        {validEmail: true},
-                        // () => this.props.emailValue(this.state.email) 
-                    );
-                else 
-                    this.setState(
-                        {validEmail: false},
-                        // () => this.props.emailValue("") 
-                    );
-            }    
-        );
+    changeInput = (e) => {
+       this.setState({email: e.target.value});
+    };
+
+    validEmailHandler = () => {
+        if(emailRegex.test(this.state.email))
+            this.setState({validEmail: true});
+        else 
+            this.setState({validEmail: false});
     };
 
     render(){
