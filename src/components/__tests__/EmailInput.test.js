@@ -54,4 +54,13 @@ describe("Email Input", () => {
         expect(email_input.instance().className).toEqual('form-control is-invalid');
     });
 
+    it("checks for the correct value on the input", ()=>{
+        let email_input = mounted_wrapper.find('input');
+        email_input.simulate('change', {target: {value: 'correctemail@gmail.com'}});
+        email_input.simulate('blur');
+
+        expect(email_input.instance().value).toEqual('correctemail@gmail.com');
+        expect(email_input.instance().className).toEqual('form-control is-valid');
+    });
+
 });
