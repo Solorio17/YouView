@@ -48,8 +48,10 @@ describe("Email Input", () => {
     it("checks for the wrong value on the input", () => {
         let email_input = mounted_wrapper.find('input');
         email_input.simulate('change', {target: {value: 'asd@.com'}});
+        email_input.simulate('blur');
+
         expect(email_input.instance().value).toEqual('asd@.com');
-        expect(email_input.instance().className).toEqual('form-control is-invalid')
+        expect(email_input.instance().className).toEqual('form-control is-invalid');
     });
 
 });
